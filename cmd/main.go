@@ -39,6 +39,7 @@ import (
 
 	testolmoperatorframeworkiov1 "github.com/operator-framework/test-operator/api/v1"
 	"github.com/operator-framework/test-operator/internal/controller"
+	webhooktestv2 "github.com/operator-framework/test-operator/internal/webhook/v2"
 	// +kubebuilder:scaffold:imports
 )
 
@@ -184,7 +185,7 @@ func main() {
 		WebhookServer:          webhookServer,
 		HealthProbeBindAddress: probeAddr,
 		LeaderElection:         enableLeaderElection,
-		LeaderElectionID:       "d4ca4fc7.my.domain",
+		LeaderElectionID:       "d4ca4fc7.olm.operatorframework.io",
 		// LeaderElectionReleaseOnCancel defines if the leader should step down voluntarily
 		// when the Manager ends. This requires the binary to immediately end when the
 		// Manager is stopped, otherwise, this setting is unsafe. Setting this significantly
@@ -208,6 +209,13 @@ func main() {
 	}).SetupWithManager(mgr); err != nil {
 		setupLog.Error(err, "unable to create controller", "controller", "OLMTest")
 		os.Exit(1)
+	}
+	// nolint:goconst
+	if os.Getenv("ENABLE_WEBHOOKS") != "false" {
+		if err = webhooktestv2.SetupOLMTestWebhookWithManager(mgr); err != nil {
+			setupLog.Error(err, "unable to create webhook", "webhook", "OLMTest")
+			os.Exit(1)
+		}
 	}
 	// +kubebuilder:scaffold:builder
 

@@ -33,9 +33,9 @@ type OLMTestReconciler struct {
 	Scheme *runtime.Scheme
 }
 
-// +kubebuilder:rbac:groups=test.olm.operatorframework.io.my.domain,resources=olmtests,verbs=get;list;watch;create;update;patch;delete
-// +kubebuilder:rbac:groups=test.olm.operatorframework.io.my.domain,resources=olmtests/status,verbs=get;update;patch
-// +kubebuilder:rbac:groups=test.olm.operatorframework.io.my.domain,resources=olmtests/finalizers,verbs=update
+// +kubebuilder:rbac:groups=test.olm.operatorframework.io,resources=olmtests,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=test.olm.operatorframework.io,resources=olmtests/status,verbs=get;update;patch
+// +kubebuilder:rbac:groups=test.olm.operatorframework.io,resources=olmtests/finalizers,verbs=update
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.

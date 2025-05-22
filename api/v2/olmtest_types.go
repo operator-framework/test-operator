@@ -38,6 +38,8 @@ type OLMTestStatus struct {
 }
 
 // +kubebuilder:object:root=true
+// +kubebuilder:storageversion
+// +kubebuilder:conversion:hub
 // +kubebuilder:subresource:status
 // +kubebuilder:storageversion
 

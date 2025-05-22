@@ -1,4 +1,4 @@
-apiVersion: test.olm.operatorframework.io.my.domain/v2
+apiVersion: test.olm.operatorframework.io/v2
 kind: OLMTest
 metadata:
   labels:
