@@ -16,7 +16,7 @@ limitations under the License.
 
 // Package v2 contains API Schema definitions for the test.olm.operatorframework.io v2 API group.
 // +kubebuilder:object:generate=true
-// +groupName=test.olm.operatorframework.io.my.domain
+// +groupName=test.olm.operatorframework.io
 package v2
 
 import (
@@ -26,7 +26,7 @@ import (
 
 var (
 	// GroupVersion is group version used to register these objects.
-	GroupVersion = schema.GroupVersion{Group: "test.olm.operatorframework.io.my.domain", Version: "v2"}
+	GroupVersion = schema.GroupVersion{Group: "test.olm.operatorframework.io", Version: "v2"}
 
 	// SchemeBuilder is used to add go types to the GroupVersionKind scheme.
 	SchemeBuilder = &scheme.Builder{GroupVersion: GroupVersion}
