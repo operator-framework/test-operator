@@ -33,6 +33,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
 	testolmoperatorframeworkiov1 "github.com/operator-framework/test-operator/api/v1"
+	testolmoperatorframeworkiov2 "github.com/operator-framework/test-operator/api/v2"
 	// +kubebuilder:scaffold:imports
 )
 
@@ -60,6 +61,9 @@ var _ = BeforeSuite(func() {
 
 	var err error
 	err = testolmoperatorframeworkiov1.AddToScheme(scheme.Scheme)
+	Expect(err).NotTo(HaveOccurred())
+
+	err = testolmoperatorframeworkiov2.AddToScheme(scheme.Scheme)
 	Expect(err).NotTo(HaveOccurred())
 
 	// +kubebuilder:scaffold:scheme
