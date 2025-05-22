@@ -7,4 +7,14 @@ layout:
 - go.kubebuilder.io/v4
 projectName: test-operator
 repo: github.com/operator-framework/test-operator
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: my.domain
+  group: test.olm.operatorframework.io
+  kind: OLMTest
+  path: github.com/operator-framework/test-operator/api/v1
+  version: v1
 version: "3"
