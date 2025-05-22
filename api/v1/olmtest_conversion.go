@@ -30,7 +30,10 @@ func (src *OLMTest) ConvertTo(dstRaw conversion.Hub) error {
 	log.Printf("ConvertTo: Converting OLMTest from Spoke version v1 to Hub version v2;"+
 		"source: %s/%s, target: %s/%s", src.Namespace, src.Name, dst.Namespace, dst.Name)
 
-	// TODO(user): Implement conversion logic from v1 to v2
+	dst.Spec.NewField1 = src.Spec.Field1
+	dst.Spec.NewField2 = src.Spec.Field2
+	dst.Spec.NewField3 = src.Spec.Field3
+	dst.Spec.NewField4 = src.Spec.Field4
 	return nil
 }
 
@@ -40,6 +43,9 @@ func (dst *OLMTest) ConvertFrom(srcRaw conversion.Hub) error {
 	log.Printf("ConvertFrom: Converting OLMTest from Hub version v2 to Spoke version v1;"+
 		"source: %s/%s, target: %s/%s", src.Namespace, src.Name, dst.Namespace, dst.Name)
 
-	// TODO(user): Implement conversion logic from v2 to v1
+	dst.Spec.Field1 = src.Spec.NewField1
+	dst.Spec.Field2 = src.Spec.NewField2
+	dst.Spec.Field3 = src.Spec.NewField3
+	dst.Spec.Field4 = src.Spec.NewField4
 	return nil
 }
